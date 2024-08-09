@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+   <title>Document</title>
+   <style>
+      /* Hide scrollbar for textarea */
+      .textarea-no-scrollbar::-webkit-scrollbar {
+         display: none;
+         /* Hide scrollbar for Chrome, Safari, and Opera */
+      }
+
+      .textarea-no-scrollbar {
+         scrollbar-width: none;
+         /* Hide scrollbar for Firefox */
+      }
+   </style>
+</head>
+
+<body>
+   <div class="bg-[#080708] p-12 text-white w-screen min-h-screen">
+      <a class="hover:text-[#9381ff] text-white font-medium" href="/"><i class="ri-arrow-go-back-line"></i> Go to Home
+      </a>
+      <div class="form p-10 text-white">
+         <form action="/update" method="post">
+            <label class="mb-2" for="title">Previous Title :</label>
+            <input type="text" class="block rounded-md outline-none mb-2 w-1/4 bg-zinc-900 px-5 py-2" id="title"
+               name="oldtitle" placeholder="Previous Name" value="<%= taskname %>" readonly />
+            <label class="mb-2" for="title">New Title :</label>
+            <input type="text" class="block rounded-md outline-none mb-3 w-1/4 bg-zinc-900 px-5 py-2" id="title"
+               name="newtitle" placeholder="Enter New Title..." />
+            <label for="content">Tasks :</label>
+            <textarea
+               class="rounded-md w-full mt-2 resize-none overflow-auto min-h-[50vh] bg-zinc-900 px-5 py-2 textarea-no-scrollbar"
+               id="content" name="content" placeholder="Tasks goes here...">
+<%= data %></textarea>
+            <!-- <input class="mt-5 bg-[#9381ff] rounded-md px-5 py-2" type="submit" value="Save Changes" /> -->
+            <button class="mt-5 bg-[#9381ff] rounded-md px-5 py-2 text-black font-medium "  type="submit">
+               <i class="ri-save-line text-white"></i> Save Changes
+            </button>
+            <button class="mt-5 bg-[#9381ff] rounded-md px-5 py-2 ml-7 text-black font-medium ">
+               <a  href="/delete/<%= taskname %>"><i class="ri-delete-bin-6-line text-white "></i> Delete Task</a>
+            </button>
+         </form>
+      </div>
+   </div>
+</body>
+
+</html>

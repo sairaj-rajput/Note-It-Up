@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="bg-[#080708] p-7 text-white w-screen min-h-screen">
+    <div class="form p-10 text-white">
+      <form action="/create" method="post">
+        <label for="title">Title :</label>
+        <input type="text" class="block rounded-md outline-none mb-2 w-full bg-zinc-900 px-5 py-2" id="title" name="title" placeholder="Title goes here..." />
+        <label for="content">Tasks :</label>
+        <textarea class="block rounded-md outline-none w-full resize-none bg-zinc-900 px-5 py-2" id="content" name="content" placeholder="Tasks goes here..."></textarea>
+        <input class="mt-5 bg-[#9381ff] rounded-md px-5 py-2" type="submit" value="Create Task" />
+      </form>
+    </div>
+    <div class="tasks flex gap-5 flex-wrap p-10">
+      <% if(files.length> 0){ %> 
+        <% files.forEach(function(file){ %>
+         <% const task = file.substring(0, file.length - 4) %>
+      <div class="task bg-[#f8f7ff] text-black min-w-72 px-3 py-4 hover:blur-none">
+        <h1 class="text-3xl font-semibold tracking-tight"><%= task %></h1>
+        <div class="flex w-full justify-between ">
+        <a class="text-[#9381ff] font-normal inline-block mt-3 text-lg" href="/file/<%= task %>">Read more.</a>
+        <a class="text-[#9381ff] font-normal inline-block mt-3 text-lg" href="/edit/<%= task %>">Edit.</a>
+        </div>
+      </div>
+      <% }) %>
+      <% } else { %>
+      <h2 class="text-xl uppercase">No tasks yet..</h2>
+      <% } %>
+    </div>
+  </div>
+</body>
+
+</html>
